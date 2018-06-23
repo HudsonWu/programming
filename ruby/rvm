@@ -6,6 +6,7 @@ RVM能在系统中安装和管理多个Ruby版本, 同时还能管理不同的ge
 > curl -sSL https://get.rvm.io | bash -s stable
 > source ~/.rvm/scripts/rvn  //载入RVM环境
 > rvm -v  //检查是否安装正确
+> echo "ruby_url=https://cache.ruby-china.com/pub/ruby" > ~/.rvm/user/db  //修改ruby安装源
 2. 用RVM安装Ruby环境
 > rvm list known  //列出已知的ruby版本
 > rvm install 2.4.2  //安装2.4.2版本
@@ -19,6 +20,9 @@ RVM能在系统中安装和管理多个Ruby版本, 同时还能管理不同的ge
 > gem install bundler  //安装bundler
 5. 替换源为ruby-china
 > gem source -r https://rubygems.org/
-> gem source -a https://gems.ruby-china.org/
+> gem source -a https://gems.ruby-china.com/
 > gem source -l  //验证是否替换成功
-> bundle config mirror https://rubygems.org https://gems.ruby-china.org
+> bundle config mirror https://rubygems.org https://gems.ruby-china.com
+6. 部署多个ruby版本
+进入到项目目录, 建立一个.rvmrc文件:
+> rvm use 2.0.0@rails416

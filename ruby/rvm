@@ -5,7 +5,8 @@ RVM能在系统中安装和管理多个Ruby版本, 同时还能管理不同的ge
 1. 安装RVM
 > gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 > curl -sSL https://get.rvm.io | bash -s stable
-> source ~/.rvm/scripts/rvn  //载入RVM环境
+> source ~/.bashrc
+> source ~/.bash_profile  //载入RVM环境
 > rvm -v  //检查是否安装正确
 > echo "ruby_url=https://cache.ruby-china.com/pub/ruby" > ~/.rvm/user/db  //修改ruby安装源
 

@@ -24,6 +24,36 @@ def complex(real=0.0, imag=0.0):
     ...
 ```
 
+```python
+SUFFIXES = {1000: ['KB', 'MB', 'GB', 'TB', PB', 'EB', 'ZB', 'YB'], \
+            1024: ['KIB', 'MIB', 'GIB', 'TIB', 'PIB', 'EIB', 'ZIB', YIB']}
+
+def approximate_size(size, a_kilobyte_is_1024_bytes=True):
+    '''Convert a file size to human-readable form.
+
+    Keyword arguments:
+    size -- file size in bytes
+    a_kilobyte_is_1024_bytes -- if True (default), use multiples of 1024
+                                if False, use multiples of 1000
+    
+    Returns: string
+    '''
+    if size <0:
+        raise ValueError('number must be non-negative')
+
+    multiple = 1024 if a_kilobyte_is_1024_bytes else 1000
+    for suffix in SUFFIXES[multiple]:
+        size /= multiple
+        if size < multiple:
+            return '{0:.1f} {1}'.format(size, suffix)
+
+    raise ValueError('number too large')
+
+if __name__ == '__main__':
+    print(approximate_size(1000000000000, False))
+    print(approximate_size(1000000000000))
+```
+
 The docstring of a script (a stand-alone program) should be usable as its "usage" message, printed when the script is invoked with incorrect or missing arguments (or perhaps with a "-h" option, for "help"). Such a docstring should document the script's function and command line syntax, environment variables, and files. Usage messages can be fairly elaborate (several screens full) and should be sufficient for a new user to use the command properly, as well as a complete quick reference to all options and arguments for the sophisticated user.
 
 The docstring for a module should generally list the classes, exceptions and functions (and any other objects) that are exported by the module, with a one-line summary of each. (These summaries generally give less detail than the summary line in the object's docstring.) The docstring for a package (i.e., the docstring of the package's __init__.py module) should also list the modules and subpackages exported by the package.

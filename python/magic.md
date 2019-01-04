@@ -142,14 +142,14 @@ dog('dobi', 'xuzhoufeng', age = 2)  # dobi xuzhoufeng 2
 
 ## Python中一些通用的特殊函数
 
-1. 初始化与终止化
+### 初始化与终止化
 
-`__new__(cls[, args...])`
++ `__new__(cls[, args...])`
 
   `__new__()`是一个静态方法, 用于根据类型创建实例. Python在调用`__new__()`方法获得实例后, 会调用这个实例的`__init__()`方法, 然后将最初传给`__new__()`方法的参数都传给`__init__()`方法. 
 
 
-`__init__()`
++ `__init__()`
 
   `__init__()`是一个实例方法, 用来在实例创建完成后进行必要的初始化, 该方法必须返回None.
 
@@ -160,7 +160,7 @@ super(C, self).__init__()
 ```
  
 
-`__del__(self)`
++ `__del__(self)`
 
    在GC之前, Python会调用这个对象的`__del__()`方法完成一些终止化工作. 如果没有`__del__()`方法, 那么Python不做特殊的处理; 
 
@@ -174,9 +174,9 @@ super(C, self).__init__()
 
  
 
-2. 表现形式
+### 表现形式
 
-`__repr__(self)`
++ `__repr__(self)`
 
   Python内置的repr()函数, `x`表达式形式, 或者交互式解释器在显示一个表达式语句的结果时, 都调用这个对象的`__repr__()`方法; 
 
@@ -186,7 +186,7 @@ super(C, self).__init__()
 
  
 
-`__str__(self)`
++ `__str__(self)`
 
   Python内置的1. str()函数, 2. print(x)语句, 都会调用对象的`__str__()`方法; 
 
@@ -198,7 +198,7 @@ super(C, self).__init__()
 
  
 
-`__unicode__(self)`
++ `__unicode__(self)`
 
   Python内置的unicode(x)方法会调用`__unicode__()`方法; 
 
@@ -208,39 +208,39 @@ super(C, self).__init__()
 
  
 
-3. 比较、哈希与布尔值
+### 比较、哈希与布尔值
 
-`__lt__(self, other)`
++ `__lt__(self, other)`
 
   `x<y` 运算将会调用实例x的__lt__(self, other)方法; 
 
  
 
-`__le__(self, other)`
++ `__le__(self, other)`
 
   `x<=y` 运算将会调用实例x的__le__(self, other)方法; 
 
  
 
-`__gt__(self, other)`
++ `__gt__(self, other)`
 
   `x>y` 运算将会调用实例x的__gt__(self, other)方法; 
 
  
 
-`__ge__(self, other)`
++ `__ge__(self, other)`
 
   `x>=y` 运算将会调用实例x的__ge__(self, other)方法; 
 
  
 
-`__eq__(self, other)`
++ `__eq__(self, other)`
 
   `x==y` 运算将会调用实例x的__eq__(self, other)方法; 
 
  
 
-`__ne__(self, other)`
++ `__ne__(self, other)`
 
   `x!=y` 运算将会调用实例x的__ne__(self, other)方法; 
 
@@ -248,7 +248,7 @@ super(C, self).__init__()
 
  
 
-`__cmp__(self, other)`
++ `__cmp__(self, other)`
 
   对于上面提到的比较操作, 如果对应的特殊方法没有定义或者返回NotImplemented, 则会调用__cmp__(self, other)再进行一次尝试; 
 
@@ -262,7 +262,7 @@ super(C, self).__init__()
 
  
 
-`__hash__(self)`
++ `__hash__(self)`
 
   三种情形会调用`__hash__()`方法: 1. 内置的hash()方法, 2.作为字典的键时, 3.作为集合的成员时; 
 
@@ -276,7 +276,7 @@ super(C, self).__init__()
 
   
 
-`__nonzero__(self)`
++ `__nonzero__(self)`
 
   判断一个对象是为真还是假时, 例如调用bool(x)方法时, Python会调用x.__nonzero__(self)方法, `__nonzero__()`方法应该返回True或False. 
 
@@ -294,9 +294,9 @@ if len(container) > 0 :
 
  
 
-4. 属性的引用、绑定与解绑定
+### 属性的引用、绑定与解绑定
 
-`__getattribute__(self, name)`
++ `__getattribute__(self, name)`
 
   访问对象的属性 x.y 时, Python会自动调用 x.__getattribute__('y') 方法; 
 
@@ -306,7 +306,7 @@ if len(container) > 0 :
 
  
 
-`__getattr__(self, name)`
++ `__getattr__(self, name)`
 
   当常规的属性访问（ x.__class__ 或 x.__dict__ 的键访问）无法找到目标属性时, Python会调用 `__getattr__()` 方法; 
 
@@ -316,7 +316,7 @@ if len(container) > 0 :
 
   *区别 __getattribute__ 和 __getattr__, 前者是任何通过 x.y 访问实例的属性时都会调用的特殊方法, 而后者则是在正常访问形式下无法找到的情况下才会被调用. 
 
-`__setattr__(self, name, value)`
++ `__setattr__(self, name, value)`
 
   绑定实例的某个属性（赋值）, 例如 x.y = value 时, Python会自动调用 x.__setattr__('y', value) 方法; 
 
@@ -326,7 +326,7 @@ if len(container) > 0 :
 
  
 
-`__delattr__(self, name)`
++ `__delattr__(self, name)`
 
   当解绑定一个对象的某个属性（例如调用 del x.y ）时, 会调用 x.__delattr__('y') 方法; 
 
@@ -336,8 +336,8 @@ if len(container) > 0 :
 
  
 
-5. 可调用对象
+### 可调用对象
 
-`__call__(self[, args...])`
++ `__call__(self[, args...])`
 
    定义了该方法的对象可以像函数那样被调用, 因此被称为可调用对象. 

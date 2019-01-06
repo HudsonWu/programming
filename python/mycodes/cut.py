@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+'''Extract the words you need
+
+Command line usage:
+$ python3 cut.py
+'''
 
 import re
 

@@ -34,3 +34,7 @@ if __name__ == '__main__':
         print(plural(sys.argv[1]))
     else:
         print(__doc__)
+
+# 使用下面的命令可直接将文件内容保存到列表
+# names = list(open('examples/favorite-people.txt', encoding='utf-8'))
+

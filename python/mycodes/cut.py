@@ -27,7 +27,6 @@ with open("source.html", encoding="utf-8") as pattern_file:
         if shaPattern.search(pattern):
             sha_result = shaPattern.search(pattern).groups()[0]
             sha_list.append(sha_result)
-    pattern_file.close()
 
 name_list.remove('Windows 7 With SP1 64位英文家庭普通版')
 name_list.remove('Windows 7 With SP1 64位简体中文家庭普通版')

@@ -2,16 +2,21 @@
 
 # -*- coding: utf-8 -*-
 
-import MySQLdb
+import pymysql
 
-def connectdb(db_host, db_username, db_passwd, db_database):
-    print('连接到mysql服务器...')
+# 创建数据库连接
+conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', password='yfyunmysql', db='parallel', charset='utf8')
 
-    db = MySQLdb.connect(db_host, db_username, db_passwd, db_database, charset='utf-8')
+# 创建游标
+cursor = conn.cursor()
 
-    return db
+table1 = "contracts"
+table2 = "projects"
 
-def createtable():
+contract_ids_sql = "select id from %s where contract_number like %s" % (table1, condition)
+project_ids_sql = "select id from %s" % (table2)
+
+
 
 # contracts projects
 # tasks tasks_department tasks_executor
@@ -19,6 +24,4 @@ def createtable():
 # archives
 # user_message_groups  user_message_groups_has_user 
 # project_task_list
-# https://blog.csdn.net/Oscer2016/article/details/70257024
-# http://www.runoob.com/python/python-mysql.html
 

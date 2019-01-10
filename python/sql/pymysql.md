@@ -41,29 +41,78 @@ import pymysql
 
 通俗来说, 操作数据和获取数据库结果都要通过游标来操作
 
-对于大数据通常使用sscursor方法来操作, 它相当于一个迭代器, 每次只取一条, 并且使用fetchone时, 取完一条后再取下一条
+### 设置游标类型
+
++ Cursor, 默认, 元组类型
++ DictCursor, 字典类型
++ DictCursorMixin, 支持自定义的游标类型, 需先自定义才可使用
++ SSCursor, 无缓冲元组类型
++ SSDictCursor, 无缓冲字典类型
+
 ```
-cursor = conn.cursor(pymysql.cursors.SSCursor)
+//指定为字典类型
+cur = conn.cursor(cursor=pymysql.cursors.DictCursor)
+
+//对于大数据通常使用sscursor方法来操作, 它相当于一个迭代器, 
+//每次只取一条, 并且使用fetchone时, 取完一条后再取下一条
+cur = conn.cursor(pymysql.cursors.SSCursor)
 ```
 
 ### 游标控制
 
-所有数据查询操作均基于游标, 通过cursor.scroll(num, mode)控制游标的位置
+所有数据查询操作均基于游标, 通过cur.scroll(num, mode)控制游标的位置
 ```python
-cursor.scroll(1, mode='relative')   # 相对当前位置移动
-cursor.scroll(2, mode='absolute')   # 相对绝对位置移动
+cur.scroll(1, mode='relative')   # 相对当前位置移动
+cur.scroll(2, mode='absolute')   # 相对绝对位置移动
 ```
 
-### 游标的方法
+### 游标的方法和属性
 
-1. execute(), 执行sql语句的方法
+1. execute(sql, args), 执行单条sql
 2. fetchall(), 取所有结果, 就是获得执行sql语句后的结果
 3. fetchone(), 得到结果集的下一行
+4. executemany(sql, args), 批量执行sql
 
 ```python
-cursor.fetchone()   # 获取单条数据
-cursor.fetchmany(3) # 获取N条数据
-cursor.fetchall()   # 获取所有数据
+cur.fetchone()   # 获取单条数据
+cur.fetchmany(3) # 获取N条数据
+cur.fetchall()   # 获取所有数据
+```
+
+```
+//rowcount, 只读属性, 执行execute()方法后影响的行数
+effect_row = cur.execute(sql_str)
+cur.rowcount
+
+//lastrowid, 获取自增id
+cur.lastrowid
+```
+
+## 事务处理
+
++ 开启事务, `conn.begin()`
++ 提交修改, `conn.commit()`
++ 回滚事务, `conn.rollback()`
+
+## 防止sql注入
+
++ 转义特殊字符, `conn.escape_string(str)`
++ 参数化语句, 支持传入参数进行自动转义、格式化sql语句, 以避免sql注入等安全问题
+
+```python
+# 插入数据(元组或列表)
+effect_row = cur.execute('INSERT INTO `users` (`name`, `age`) VALUES (%s, %s)', ('mary', 18))
+
+# 插入数据(字典)
+info = {'name': 'fake', 'age': 15}
+effect_row = cur.execute('INSERT INTO `users` (`name`, `age`) VALUES (%(name)s, %(age)s)', info)
+
+# 批量插入
+effect_row = cur.executemany(
+    'INSERT INTO `users` (`name`, `age`) VALUES (%s, %s) ON DUPLICATE KEY UPDATE age=VALUES(age)', [
+        ('hello', 13),
+        ('fake', 28),
+    ])
 ```
 
 ## 连接
@@ -137,13 +186,6 @@ conn = mysql_api.connect_db()
                 cur.close()
                 conn.close()
 ```
-
-rowcount, 只读属性, 执行execute()方法后影响的行数
-```
-effect_row = cur.execute(sql_str)
-cur.rowcount
-```
-
 
 ## 更新
 

@@ -55,6 +55,8 @@ cur = conn.cursor(cursor=pymysql.cursors.DictCursor)
 
 //对于大数据通常使用sscursor方法来操作, 它相当于一个迭代器, 
 //每次只取一条, 并且使用fetchone时, 取完一条后再取下一条
+//SSCursor, 流式游标, 将执行结果卡在网络缓冲区, 当网络缓冲区堆满时,
+//Mysql将查询暂停, 当网络缓存区有位置时, 将会在上次暂停的地方继续读取
 cur = conn.cursor(pymysql.cursors.SSCursor)
 ```
 

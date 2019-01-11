@@ -11,6 +11,10 @@
 # user_message_groups  user_message_group_has_user 
 # project_task_list
 
+import pymysql
+import os.path
+import traceback
+
 def print_help():
     fn = os.path.basename(__file__)
     print('\n'
@@ -112,10 +116,7 @@ def delete_table_datas(table, column, datas):
         print("Error: Unable to delete datas")
 
 if __name__ == '__main__':
-    import pymysql
     import sys
-    import os.path
-    import traceback
     
     if len(sys.argv) == 1:
         print_help()

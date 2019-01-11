@@ -21,7 +21,7 @@ def print_help():
           'Usage:\n'
           ' $ python3 {} "your-matching-text"     # (1)\n'.format(fn) +
           ' $ python3 {} -l "your-matching-text"  # (2)\n'.format(fn) +
-          ' $ python3 {} -d "your-matching-text"  # (2)\n'.format(fn) +
+          ' $ python3 {} -d "your-matching-text"  # (3)\n'.format(fn) +
           '\n\n'
           '(1) List matching counts.\n'
           '(2) List contracts_numbers where contract_number like the your-matching-text.\n'

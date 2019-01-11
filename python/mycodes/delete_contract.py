@@ -50,10 +50,13 @@ def get_contract_id(condition):
         return tuple(contracts)
     except Exception:
         traceback.print_exec()
-        print("Error: Unable to fetch datas")
+        print("Error: Unable to fetch datas (get_contract_id)")
 
 def get_project_id(contracts):
-    sql = "select id from projects where contract_id in {}".format(contracts)
+    if len(contracts) == 1:
+        sql = "select id from projects where contract_id = {}".format(contracts[0])
+    else:
+        sql = "select id from projects where contract_id in {}".format(contracts)
     try:
         project_nums = cur.execute(sql)
         if project_nums == 0:
@@ -66,10 +69,13 @@ def get_project_id(contracts):
         return tuple(projects)
     except Exception:
         traceback.print_exec()
-        print("Error: Unable to fetch datas")
+        print("Error: Unable to fetch datas (get_project_id)")
 
 def get_table_id(table, projects):
-    sql = "select id from {} where project_id in {}".format(table, projects)
+    if len(projects) == 1:
+        sql = "select id from {} where project_id = {}".format(table, projects[0])
+    else:
+        sql = "select id from {} where project_id in {}".format(table, projects)
     try:
         data_nums = cur.execute(sql)
         if data_nums == 0:
@@ -82,12 +88,15 @@ def get_table_id(table, projects):
         return tuple(datas)
     except Exception:
         traceback.print_exec()
-        print("Error: Unable to fetch datas")
+        print("Error: Unable to fetch datas (get_table_id)")
 
 def print_contracts_numbers(contracts):
     print("\n下面是匹配到的合同的合同编号:")
     print("----------")
-    sql = "select contract_number from contracts where id in {}".format(contracts)
+    if len(contracts) == 1:
+        sql = "select contract_number from contracts where id = {}".format(contracts[0])
+    else:
+        sql = "select contract_number from contracts where id in {}".format(contracts)
     try:
         cur.execute(sql)
         i = 0
@@ -100,12 +109,15 @@ def print_contracts_numbers(contracts):
         print("\n----------")
     except Exception:
         traceback.print_exec()
-        print("Error: Unable to print datas")
+        print("Error: Unable to print datas (print_contracts_numbers)")
 
 
 def delete_table_datas(table, column, datas):
     print("删除%s表中%s列在以下范围内的数据:\n %s" % (table, column, str(datas)))
-    sql = "delete from {} where {} in {}".format(table, column, datas)
+    if len(datas) == 1:
+        sql = "delete from {} where {} = {}".format(table, column, datas[0])
+    else:
+        sql = "delete from {} where {} in {}".format(table, column, datas)
     try:
         data_nums = cur.execute(sql)
         conn.commit()
@@ -113,7 +125,7 @@ def delete_table_datas(table, column, datas):
     except Exception:
         traceback.print_exec()
         conn.rollback()
-        print("Error: Unable to delete datas")
+        print("Error: Unable to delete datas (delete_table_datas)")
 
 if __name__ == '__main__':
     import sys

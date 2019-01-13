@@ -92,7 +92,7 @@ def get_table_id(table, projects):
 
 def print_contracts_numbers(contracts):
     print("\n下面是匹配到的合同的合同编号:")
-    print("----------")
+    print("-" * 10)
     if len(contracts) == 1:
         sql = "select contract_number from contracts where id = {}".format(contracts[0])
     else:
@@ -106,7 +106,7 @@ def print_contracts_numbers(contracts):
                 print(contract_number[0])
             else:
                 print(contract_number[0], end='  ')
-        print("\n----------")
+        print("\n" + "-" * 10)
     except Exception:
         traceback.print_exec()
         print("Error: Unable to print datas (print_contracts_numbers)")

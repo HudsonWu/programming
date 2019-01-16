@@ -18,39 +18,39 @@ Some of the commonly used parameters for `basicConfig()`:
 
 1. Set what level of log messages
 
-```console
-> import logging
+```python
+>>> import logging
 
-> logging.basicConfig(level=logging.DEBUG)
-> logging.debug('This will get logged')
+>>> logging.basicConfig(level=logging.DEBUG)
+>>> logging.debug('This will get logged')
 DEBUG:root:This will get logged
 ```
 
 2. Written to a file
 
-```console
-> import logging
+```python
+>>> import logging
 
-> logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
-> logging.warning('This will get logged to a file')
+>>> logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+>>> logging.warning('This will get logged to a file')
 root - ERROR - This will get logged to a file
 ```
 
 3. Formatting the Output
 
-```console
-> import logging
+```python
+>>> import logging
 
-> logging.basicConfig(format='%(process)d-%(levelname)s-%(message)s')
-> logging.warning('This is a Warning')
+>>> logging.basicConfig(format='%(process)d-%(levelname)s-%(message)s')
+>>> logging.warning('This is a Warning')
 18472-WARNING-This is a Warning
 ```
 
-```console
-> import logging
+```python
+>>> import logging
 
-> logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
-> logging.info('Admin logged in')
+>>> logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
+>>> logging.info('Admin logged in')
 2018-07-11 20:12:06,288 - Admin logged in
 ```
 

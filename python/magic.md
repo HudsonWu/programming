@@ -28,93 +28,93 @@ print(clsfunc)  # <function Test.func.<locals>.inn_func at 0x7ff7c7b51bf8>
 
 1. `__doc__`
 可写, 用于获取函数的文档说明, 如果没有, 则返回`None`
-```console
-> print('Test.func.__doc__:', Test.func.__doc__)
+```python
+>>> print('Test.func.__doc__:', Test.func.__doc__)
 Test.func.__doc__: 这里是一个闭包函数
-> Test.func.__doc__ = 'ddd'   # 注意, 这里是Test, 不是test
-> print('Test.func.__doc__:', Test.func.__doc__)
+>>> Test.func.__doc__ = 'ddd'   # 注意, 这里是Test, 不是test
+>>> print('Test.func.__doc__:', Test.func.__doc__)
 Test.func.__doc__: ddd
 ```
 
 2. `__name__`
 可写, 获取函数的名称
-```console
-> print('Test.func.__name__:', Test.func.__name__)
+```python
+>>> print('Test.func.__name__:', Test.func.__name__)
 Test.func.__name__: func
-> Test.func.__name__ = 'pet'
-> print('Test.func.__name__:', Test.func.__name__)
+>>> Test.func.__name__ = 'pet'
+>>> print('Test.func.__name__:', Test.func.__name__)
 Test.func.__name__: pet
 ```
 
 3. `__qualname__`
 可写, 获取函数的qualname, 点示法显示函数名称、所在的类、模块等梯级地址
-```console
-> print('Test.func.__qualname__:', Test.func.__qualname__)
+```python
+>>> print('Test.func.__qualname__:', Test.func.__qualname__)
 Test.func.__qualname__: Test.func
-> Test.func.__qualname__ = 'path'
-> print('Test.func.__qualname__:', Test.func.__qualname__)
+>>> Test.func.__qualname__ = 'path'
+>>> print('Test.func.__qualname__:', Test.func.__qualname__)
 Test.func.__qualname__: path
 ```
 
 4. `__module__`
 可写, 返回函数所在的模块, 如果无则返回None
-```console
-> print('Test.func.__module__:', Test.func.__module__)
+```python
+>>> print('Test.func.__module__:', Test.func.__module__)
 Test.func.__module__: __main__
-> Test.func.__module__ = 'a'
-> print('Test.func.__module__:', Test.func.__module__)
+>>> Test.func.__module__ = 'a'
+>>> print('Test.func.__module__:', Test.func.__module__)
 Test.func.__module__: a
 ```
 
 5. `__defaults__`
 可写, 以元组的形式返回函数的默认参数, 如果无默认参数则返回None
-```console
-> print('Test.func.__defaults__:', Test.func.__defaults__)
+```python
+>>> print('Test.func.__defaults__:', Test.func.__defaults__)
 Test.func.__defaults__: ('dog',)
-> Test.func.__defaults__ = ('cat',)
-> print('Test.func.__defaults__:', Test.func.__defaults__)
+>>> Test.func.__defaults__ = ('cat',)
+>>> print('Test.func.__defaults__:', Test.func.__defaults__)
 Test.func.__defaults__: ('cat',)
-> print('clsfunc.__defaults__:', clsfunc.__defaults__)
+>>> print('clsfunc.__defaults__:', clsfunc.__defaults__)
 clsfunc.__defaults__: (1,)
 ```
 
 6. `__code__`
 可写, 返回已编译的函数对象
-```console
-> print('Test.func.__code__:', Test.func.__code__)
+```python
+>>> print('Test.func.__code__:', Test.func.__code__)
 Test.func.__code__: <code object func at 0x7ff7c7a5e540, file "<stdin>", line 2>
-> def func2():print('cat')
+>>> def func2():print('cat')
 
-> def func2():print('cat')
-> Test.func.__code__ = func2.__code__
-> Test.func()
+>>> def func2():print('cat')
+>>> Test.func.__code__ = func2.__code__
+>>> Test.func()
 cat
-> print('Test.func.__code__:', Test.func.__code__)
+>>> print('Test.func.__code__:', Test.func.__code__)
 Test.func.__code__: <code object func2 at 0x7ff7c7a5e660, file "<stdin>", line 1>
 ```
 
 7. `__globals__`
 只读, 以字典的形式返回函数所在的全局命名空间所定义的全局变量
-```console
-> print('Test.func.__globals__:', Test.func.__globals__)
+```python
+>>> print('Test.func.__globals__:', Test.func.__globals__)
 Test.func.__globals__: {'clsfunc': <function Test.func.<locals>.inn_func at 0x7ff7c7b51bf8>, '__name__': '__main__', 'func2': <function func2 at 0x7ff7c7afde18>, '__spec__': None, 'test': <__main__.Test object at 0x7ff7c7a5f6a0>, '__builtins__': <module 'builtins' (built-in)>, '__package__': None, 'Test': <class '__main__.Test'>, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__doc__': None}
 ```
 
 8. `__dict__`
 可写, 以字典的形式返回命名空间所支持的任意自定义的函数属性
-```console
-> print('Test.func.__dict__:', Test.func.__dict__)
+```python
+>>> print('Test.func.__dict__:', Test.func.__dict__)
 Test.func.__dict__: {}
 ```
 
 9. `__closure__`
 只读, 以包含cell的元组形式返回闭包所包含的自由变量
-```console
-> print('Test.func.__closure__:', Test.func.__closure__)
+```python
+>>> print('Test.func.__closure__:', Test.func.__closure__)
 Test.func.__closure__: None
-> print('clsfunc.__closure__:', clsfunc.__closure__)
+>>> print('clsfunc.__closure__:', clsfunc.__closure__)
 clsfunc.__closure__: (<cell at 0x7ff7c7a62168: str object at 0x7ff7c7a5f420>, <cell at 0x7ff7c7a620d8: str object at 0x7ff7c7a5f3e8>)
-> print('clsfunc.__closure__[x]:', clsfunc.__closure__[0].cell_contents, clsfunc.__closure__[1].cell_contents)
+>>> print('clsfunc.__closure__[x]:', clsfunc.__closure__[0].cell_contents, clsfunc.__closure__[1].cell_contents)
 clsfunc.__closure__[x]: dobi dog
 ```
 
@@ -124,8 +124,8 @@ def dog(name:str = 'dobi', age:(1, 99) = 3, species:'breed of dogs' = 'Labrador'
     return (name, age, species)
 ```
 使用`:`对参数逐个进行注释, 注释内容可以是任何形式, 比如参数的类型、作用、取值范围等, 返回值使用`->`标注, 所有的注释都会保存至函数的属性
-```console
-> dog.__annotations__
+```python
+>>> dog.__annotations__
 {'age': (1, 99), 'name': str, 'return': tuple, 'species': 'breed of dogs'}
 ```
 

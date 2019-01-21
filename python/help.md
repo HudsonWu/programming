@@ -30,3 +30,14 @@ True
 True
 ```
 运算符`is`, `is not`就是通过id()的返回值(即身份)来判定的, 也就是看它们是不是同一个对象的"标签"
+
+## 基础重载方法
+
+```
+方法        描述        简单调用
+__init__(self[, args...])    构造函数    obj = className(args)
+__del__(self)    析构方法, 删除一个对象    del obj
+__repr__(self)    转化为供解释器读取的形式    repr(obj)
+__str__(self)    用于将值转化为适于人阅读的形式    str(obj)
+__cmp__(self, x)    对象比较    cmp(obj, x)wq
+```

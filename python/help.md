@@ -39,5 +39,5 @@ __init__(self[, args...])    构造函数    obj = className(args)
 __del__(self)    析构方法, 删除一个对象    del obj
 __repr__(self)    转化为供解释器读取的形式    repr(obj)
 __str__(self)    用于将值转化为适于人阅读的形式    str(obj)
-__cmp__(self, x)    对象比较    cmp(obj, x)wq
+__cmp__(self, x)    对象比较    cmp(obj, x)
 ```

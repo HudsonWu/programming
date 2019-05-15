@@ -1,3 +1,12 @@
+# Python
+
+## requirement.txt
+
+```
+pip freeze > requirements.txt
+pip install -r requirements.txt
+```
+
 ## References
 
 + [Python Programming Language](https://www.geeksforgeeks.org/python-programming-language/)

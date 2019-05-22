@@ -44,11 +44,11 @@ python3 manage.py migrate app1
 ## runserver
 
 ```
-# start the Django server
-python3 manage.py runserver 0:8088
-
 # create a super user
 python3 manage.py createsuperuser
+
+# start the Django server
+python3 manage.py runserver 0:8088
 ```
 
 ## Remove Django App
@@ -56,7 +56,7 @@ python3 manage.py createsuperuser
 ### Remove tables use dbshell
 
 ```
-$ ./manage.py dbshell
+$ python3 manage.py dbshell
 # show the command list
 sqlite> .help
 # show current database
@@ -71,7 +71,7 @@ sqlite> drop table table_name
 
 1. Comment or remove 'app1' from Django project `settings.py` file `INSTALLED_APPS` section
 
-2. RUN `./manage.py makemigrations` and `./manage.py migrate app1` to remove app1
+2. RUN `python3 manage.py makemigrations` and `python3 manage.py migrate app1` to remove app1
 
 3. Delete app1 folder
 

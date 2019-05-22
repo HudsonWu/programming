@@ -7,6 +7,14 @@ pip freeze > requirements.txt
 pip install -r requirements.txt
 ```
 
+## Trace
+
+```
+python -m trace --count -C . somefile.py
+
+python -m pdb somefile.py
+```
+
 ## Tips
 
 ```

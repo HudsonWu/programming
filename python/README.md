@@ -15,6 +15,11 @@ python -m trace --count -C . somefile.py
 python -m pdb somefile.py
 ```
 
+```
+import pdb
+pdb.set_trace()
+```
+
 ## Tips
 
 ```

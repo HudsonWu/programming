@@ -1,6 +1,7 @@
 # Django
 
 + <https://www.dev2qa.com/how-to-create-remove-django-project-application/>
++ [simple example](https://github.com/larger5/Django_CRUD_Student)
 
 ```
 # Install Django

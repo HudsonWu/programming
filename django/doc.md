@@ -10,3 +10,4 @@
 ## 快速掌握文档
 
 + [jwt-authentication](https://simpleisbetterthancomplex.com/tutorial/2018/12/19/how-to-use-jwt-authentication-with-django-rest-framework.html)
++ [simpleisbetterthancomplex](https://simpleisbetterthancomplex.com/)

@@ -1,4 +1,4 @@
-# Django
+a Django
 
 + <https://www.dev2qa.com/how-to-create-remove-django-project-application/>
 + [simple example](https://github.com/larger5/Django_CRUD_Student)
@@ -40,6 +40,9 @@ python3 manage.py makemigrations app1
 
 # apply the model changes to the backend database
 python3 manage.py migrate app1
+
+# 查看执行语句
+python3 manage.py sqlmigrate app1 0001
 ```
 
 ## runserver

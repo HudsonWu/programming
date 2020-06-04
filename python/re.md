@@ -10,6 +10,8 @@
 '100 BROAD RD. APT. 3'
 >>> re.sub('\\bROAD\\b', 'RD.', s)
 '100 BROAD RD. APT. 3'
+>>> re.sub('([^aeiou])y$', r'\1ies', 'vacancy')
+'vacancies'
 ```
 
 ## re.search

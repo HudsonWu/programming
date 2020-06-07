@@ -2,7 +2,7 @@
 
 ## re.sub
 
-```
+```python
 >>> import re
 >>> s = '100 BROAD ROAD APT. 3'
 >>> # \b，匹配一个单词边界，使用\b表达一个独立的词
@@ -27,7 +27,7 @@ D = 500
 M = 1000
 ```
 
-```
+```python
 >>> pattern = '^M?M?M?(CM|CD|D?C?C?C?)(XC|XL|L?X?X?X?)(IX|IV|V?I?I?I?)$'
 >>> pattern = '^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$'
 >>> re.search(pattern, 'MMDCLXVI')
@@ -36,7 +36,7 @@ M = 1000
 
 ### 松散正则表达式
 
-```
+```python
 >>> import re
 >>> pattern = '''
     ^                 # beginning of string
@@ -56,14 +56,14 @@ M = 1000
 
 ## re.compile
 
-```
+```python
 >>> # \d匹配所有0-9的数字，\D匹配除了数字外的所有字符
 >>> phonePattern = re.compile(r'(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$')
 >>> phonePattern.search('work 1-(800) 555.1212#1234').groups()
 ('800', '555', '1212', '1234')
 ```
 
-```
+```python
 >>> phonePattern = re.compile('''
                 # don't match beginning of string, number can start anywhere
     (\d{3})     # area code is 3 digits (e.g. '800')
@@ -77,4 +77,14 @@ M = 1000
     ''', re.VERBOSE)
 >>> phonePattern.search('work 1-(800) 555.1212#1234').groups()
 ('800', '555', '1212', '1234')
+```
+
+## re.findall
+
+```python
+>>> import re
+>>> re.findall('[0-9]+', '16 2-by-4s in row of 8')
+['16', '2', '4', '8']
+>>> re.findall(' s.*? s', "The sixth sick sheikh's sixth sheep's sick.")
+[' sixth s', " sheikh's s", " sheep's s"]
 ```

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>first_vue</title>
+</head>
+
+<body>
+  <!-- {{ }}支持表达式，不支持语句 -->
+  <div id="app">
+    {{message}} {{message + " " + message}}
+    <!-- <div v-bind:id="message"></div> -->
+    <!-- 使用v-bind指令可以渲染动态值，v-bind是常用指令，可以简写成下面这种形式 -->
+    <div :id="message"></div>
+    <ul>
+      <li v-for="item in list">
+        <span v-if="!item.del">{{item.title}}</span>
+        <span v-else style="text-decoration: line-through">{{item.title}}</span>
+        <button v-show="!item.del">删除</button>
+      </li>
+    </ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello world',
+        list: [{
+          title: '课程1',
+          del: false
+        }, {
+          title: '课程2',
+          del: true
+        }],
+      }
+    })
+  </script>
+</body>
+
+</html>

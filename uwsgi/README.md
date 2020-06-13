@@ -24,3 +24,8 @@ threads = 2
 stats = 127.0.0.1:9191
 # uwsgi yourfile.ini
 ```
+
+## 引用
+
++ [uwsgi文档](https://uwsgi-docs.readthedocs.io/en/latest/index.html)
++ [django-uwsgi](https://uwsgi-docs.readthedocs.io/en/latest/index.html)

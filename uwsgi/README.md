@@ -8,4 +8,19 @@ uwsgi --socket 127.0.0.1:3031 --wsgi-file foobar.py --master --processes 4 --thr
 
 # http协议
 uwsgi --http-socket 127.0.0.1:3031 --wsgi-file foobar.py --master --processes 4 --threads 2 --stats 127.0.0.1:9191
+
+# django
+uwsgi --socket 127.0.0.1:3031 --chdir /home/foobar/myproject/ --wsgi-file myproject/wsgi.py --master --processes 4 --threads 2 --stats 127.0.0.1:9191
+```
+
+```
+# yourfile.ini
+[uwsgi]
+socket = 127.0.0.1:3031
+chdir = /home/foobar/myproject/
+wsgi-file = myproject/wsgi.py
+processes = 4
+threads = 2
+stats = 127.0.0.1:9191
+# uwsgi yourfile.ini
 ```

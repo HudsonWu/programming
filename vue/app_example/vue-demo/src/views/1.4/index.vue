@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import PropsAndData from "./components/PropsAndData";
+import PropsAndData from "./PropsAndData";
 let name = "world";
 export default {
   components: {

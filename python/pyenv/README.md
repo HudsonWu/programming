@@ -44,4 +44,7 @@ pyenv deactivate
 # 国内加速, 配置环境变量
 变量名: PYTHON_BUILD_MIRROR_URL
 变量值: https://npm.taobao.org/mirrors/python/
+
+# 使用指定源下载python
+$ export v=2.7.6; wget https://npm.taobao.org/mirrors/python/$v/Python-$v.tar.xz -P ~/.pyenv/cache/; pyenv install $v 
 ```

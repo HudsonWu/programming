@@ -97,6 +97,8 @@ nvm use 4.4.0
 nvm uninstall 12.18.0
 # 设置node mirror
 nvm node_mirror https://npm.taobao.org/mirrors/node/
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/
 # 设置npm mirror
 nvm npm_mirror https://npm.taobao.org/mirrors/npm/
+export NVM_NPM_MIRROR=https://npm.taobao.org/mirrors/npm/
 ```

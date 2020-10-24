@@ -77,3 +77,26 @@ npm config set registry https://registry.npm.taobao.org/
 npm install --registry=https://registry.npm.taobao.org
 npm i logo --registry=https://registry.npm.taobao.org
 ```
+
+## nvm, 版本管理
+
+```
+# 启用版本管理
+nvm on
+# 关闭版本管理
+nvm off
+# 查看可以下载的版本
+nvm list available
+# 查看可以使用的版本
+nvm list
+# 装指定版本
+nvm install 12.18.0
+# 启用特定版本
+nvm use 4.4.0
+# 卸载
+nvm uninstall 12.18.0
+# 设置node mirror
+nvm node_mirror https://npm.taobao.org/mirrors/node/
+# 设置npm mirror
+nvm npm_mirror https://npm.taobao.org/mirrors/npm/
+```

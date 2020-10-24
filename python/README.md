@@ -1,10 +1,14 @@
 # Python
 
-## requirement.txt
+## pip
 
 ```
+# 依赖文件
 pip freeze > requirements.txt
 pip install -r requirements.txt
+
+# 更新为指定版本
+pip install --upgrade tensorflow==1.1.0rc2
 ```
 
 ## Trace
